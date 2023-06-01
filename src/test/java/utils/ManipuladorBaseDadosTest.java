@@ -38,7 +38,7 @@ public class ManipuladorBaseDadosTest {
     }
 
     @Test
-    public void leCardapioVazio() throws CardapioVazioException {
+    public void leCardapioVazio() {
         bd = new ManipuladorBaseDados("cardapio_vazio.csv", dirResources);
         assertThrows(CardapioVazioException.class, () -> bd.leCardapio());
     }
