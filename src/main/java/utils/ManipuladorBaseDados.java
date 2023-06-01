@@ -1,9 +1,13 @@
 package utils;
 
+import exceptions.CardapioVazioException;
 import restaurante.Alimento;
 import restaurante.Categoria;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ManipuladorBaseDados {
@@ -21,7 +25,7 @@ public class ManipuladorBaseDados {
         this.dirResources = dirResources;
     }
 
-    public ArrayList<Alimento> leCardapio() {
+    public ArrayList<Alimento> leCardapio() throws CardapioVazioException{
         File arquivo = new File(dirResources + nomeArquivo);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
@@ -36,7 +40,10 @@ public class ManipuladorBaseDados {
 
             reader.close();
 
-            return itensCardapio.isEmpty() ? null : itensCardapio;
+            if (itensCardapio.isEmpty())
+                throw new CardapioVazioException("Registro de alimentos do cardápio vazio.");
+
+            return itensCardapio;
         } catch (IOException e) {
             return null;
         }
