@@ -1,19 +1,18 @@
 package restaurante;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Cozinha {
-    private final ArrayList<Alimento> cardapio;
-    private Queue<Pedido> pedidos;
+    private final Cardapio cardapio;
+    private final Queue<Pedido> pedidos;
 
-    public Cozinha(ArrayList<Alimento> cardapio) {
+    public Cozinha(Cardapio cardapio) {
         this.cardapio = cardapio;
         this.pedidos = new LinkedList<>();
     }
 
-    public ArrayList<Alimento> getCardapio() {
+    public Cardapio getCardapio() {
         return cardapio;
     }
 
@@ -55,33 +54,5 @@ public class Cozinha {
                     .append("\n");
 
         return listagem.isEmpty() ? null : listagem.toString();
-    }
-
-    public String listaItensCardapio() {
-        if (cardapio.isEmpty())
-            return null;
-
-        String linhaSeparadora = "+-------------------------------------------------------------------------------+\n";
-        String cabecalho = "| ID  PRODUTO                                             VALOR     CATEGORIA   |\n" ;
-        String titulo = "|                             C  A  R  D  A  P  I  O                            |\n";
-
-        StringBuilder listagem = new StringBuilder();
-        listagem.append(linhaSeparadora)
-                .append(titulo)
-                .append(linhaSeparadora)
-                .append(cabecalho)
-                .append(linhaSeparadora);
-
-        int id = 0;
-        for (Alimento alimento : cardapio)
-            listagem.append("| ")
-                    .append(++id < 10 ? " " + id : id)
-                    .append("  ")
-                    .append(alimento.toListagem())
-                    .append(" |\n");
-
-        listagem.append(linhaSeparadora);
-
-        return listagem.toString();
     }
 }
