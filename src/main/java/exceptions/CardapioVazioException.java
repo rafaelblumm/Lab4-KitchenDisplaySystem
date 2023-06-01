@@ -1,7 +1,11 @@
 package exceptions;
 
+/**
+ * Sinaliza que o cardápio informado tem registro vazio.
+ */
 public class CardapioVazioException extends Throwable {
-    private String mensagem;
+    private final String mensagem;
+
     public CardapioVazioException(String mensagem) {
         this.mensagem = mensagem;
     }

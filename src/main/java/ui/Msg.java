@@ -5,7 +5,6 @@ import java.io.IOException;
 /**
  * Classe que permite a exibição de mensagens de sucesso e erro formatadas com cores.
  */
-
 public class Msg {
 	
 	public static final String ANSI_VERMELHO = "\u001B[31m";

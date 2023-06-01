@@ -8,6 +8,9 @@ import restaurante.Pedido;
 import utils.ManipuladorBaseDados;
 import utils.Tupla;
 
+/**
+ * Classe que permite controle do fluxo do programa.
+ */
 public class Controller {
     private static final int OP_EXIBE_FILA = 1;
     private static final int OP_SOLICITA_PEDIDO = 2;
@@ -23,6 +26,10 @@ public class Controller {
         this.codigoAtual = 0;
     }
 
+    /**
+     * Realiza procedimentos necessários para inicialização do programa.
+     * @return Condição de sucesso.
+     */
     public boolean inicializa() {
         ManipuladorBaseDados bd = new ManipuladorBaseDados("cardapio.csv");
 
@@ -35,6 +42,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Inicia o programa. Controla o fluxo principal de interações.
+     */
     public void start() {
         menu.exibeTitulo();
         int op = 0;
@@ -46,6 +56,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Executa operação indicada pelo usuário.
+     * @param op Código da operação.
+     */
     private void executaOperacao(int op) {
         switch (op) {
             case OP_EXIBE_FILA ->
@@ -59,6 +73,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Registra pedido do usuário.
+     */
     private void solicitaPedido() {
         if (cozinha.adicionaPedido(aceitaPedido()))
             Msg.exibeSucesso("Pedido #" + codigoAtual + " registrado");
@@ -66,6 +83,10 @@ public class Controller {
             Msg.exibeErro("Falha ao registrar pedido #" + codigoAtual--);
     }
 
+    /**
+     * Loop de aceitação do pedido do usuário.
+     * @return Pedido gerado.
+     */
     private Pedido aceitaPedido() {
         Pedido pedido = new Pedido(++codigoAtual);
 

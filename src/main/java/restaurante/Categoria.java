@@ -1,5 +1,8 @@
 package restaurante;
 
+/**
+ * Classe que representa categorias ocupadas pelos itens do cardápio do restaurante.
+ */
 public enum Categoria {
     VEGANO("Vegano"),
     VEGETARIANO("Vegetariano"),
@@ -13,6 +16,10 @@ public enum Categoria {
         this.descricao = descricao;
     }
 
+    /**
+     * Retorna a descrição.
+     * @return Descrição.
+     */
     public String getDescricao() {
         return descricao;
     }

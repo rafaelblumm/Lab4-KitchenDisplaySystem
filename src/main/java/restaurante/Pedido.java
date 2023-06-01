@@ -6,31 +6,40 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Formatter;
 
+/**
+ * Classe que representa pedido do usuário.
+ */
 public class Pedido {
-    private int codigo;
-    private ArrayList<Tupla<Alimento, Integer>> itens;
+    public static final int MAX_QUANTIDADE = 15;
+    private final int codigo;
+    private final ArrayList<Tupla<Alimento, Integer>> itens;
 
     public Pedido(int codigo) {
         this.codigo = codigo;
         this.itens = new ArrayList<>();
     }
 
+    /**
+     * Retorna código do pedido.
+     * @return Código do pedido.
+     */
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
+    /**
+     * Retorna itens do pedido.
+     * @return Itens do pedido.
+     */
     public ArrayList<Tupla<Alimento, Integer>> getItens() {
         return itens;
     }
 
-    public void setItens(ArrayList<Tupla<Alimento, Integer>> itens) {
-        this.itens = itens;
-    }
-
+    /**
+     * Adiciona novo item a lista de alimentos do pedido.
+     * @param item Tupla contendo Alimento e quantidade.
+     * @return Condição de sucesso.
+     */
     public boolean adicionaItem(Tupla<Alimento, Integer> item) {
         if (item == null || item.getElemento1() == null || item.getElemento2() <= 0)
             return false;
@@ -38,6 +47,10 @@ public class Pedido {
         return itens.add(item);
     }
 
+    /**
+     * Calcula valor total dos itens do pedido.
+     * @return Valor total.
+     */
     public float calculaTotal() {
         float total = 0;
 
@@ -48,6 +61,10 @@ public class Pedido {
         return total;
     }
 
+    /**
+     * Formata pedido contendo informações de todos os itens adicionados na lista, código e valor total.
+     * @return Pedido formatado.
+     */
     public String exibePedido() {
         if (itens.isEmpty())
             return null;
@@ -69,6 +86,12 @@ public class Pedido {
         return pedido.toString();
     }
 
+    /**
+     * Formata item do pedido.
+     * @param alimento Alimento do item.
+     * @param quantidade Quantidade do item.
+     * @return Item formatado.
+     */
     private String formataItemPedido(Alimento alimento, int quantidade) {
         String formatacao = "| %-50s  R$ %2.2f  %03d         |";
         if (alimento.getValor() < 10)

@@ -4,7 +4,13 @@ import restaurante.Alimento;
 import restaurante.Cardapio;
 import restaurante.Pedido;
 
+/**
+ * Classe que recebe e exibe informações na tela para o usuário.
+ */
 public class Menu {
+    /**
+     * Exibe título inicial do programa.
+     */
     public void exibeTitulo() {
         String titulo = """
                                                              __                        \s
@@ -21,6 +27,9 @@ public class Menu {
         System.out.println(titulo);
     }
 
+    /**
+     * Exibe opções de operações a serem realizadas no programa.
+     */
     public void exibeOperacoes() {
         String operacoes = """
                 
@@ -37,6 +46,10 @@ public class Menu {
         System.out.println(operacoes);
     }
 
+    /**
+     * Loop de aceitação do código da operação a ser realizada.
+     * @return Código da operação.
+     */
     public int aceitaOperacao() {
         int op;
 
@@ -52,6 +65,10 @@ public class Menu {
         return op;
     }
 
+    /**
+     * Exibe fila de pedidos.
+     * @param fila Listagem da fila de pedidos.
+     */
     public void exibeFila(String fila) {
         if (fila != null)
             System.out.println(fila);
@@ -59,6 +76,11 @@ public class Menu {
             Msg.exibeErro("Nenhum pedido registrado");
     }
 
+    /**
+     * Loop de aceitação do código do produto escolhido pelo usuário.
+     * @param cardapio Cardápio com alimentos a serem escolhidos.
+     * @return Alimento escolhido.
+     */
     public Alimento aceitaAlimento(Cardapio cardapio) {
         int op;
 
@@ -74,6 +96,10 @@ public class Menu {
         return op == 0 ? null : cardapio.getItens().get(op - 1);
     }
 
+    /**
+     * Loop de aceitação da quantidade do alimento escolhido pelo usuário.
+     * @return Quantidade escolhida.
+     */
     public int aceitaQuantidade() {
         int qnt;
 
@@ -88,6 +114,10 @@ public class Menu {
         return qnt;
     }
 
+    /**
+     * Exibe pedido que foi entregue.
+     * @param pedido Pedido que foi entregue.
+     */
     public void exibeEntregaPedido(Pedido pedido) {
         if (pedido != null) {
             String titulo = """
@@ -101,6 +131,9 @@ public class Menu {
             Msg.exibeErro("Nenhum pedido registrado");
     }
 
+    /**
+     * Exibe mensagem de encerramento do programa.
+     */
     public void sair() {
         System.out.println("Encerrando aplicativo.");
     }

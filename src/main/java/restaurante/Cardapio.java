@@ -2,6 +2,9 @@ package restaurante;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que representa um registro de alimentos do restaurante.
+ */
 public class Cardapio {
     private final ArrayList<Alimento> itens;
 
@@ -9,10 +12,18 @@ public class Cardapio {
         this.itens = itens;
     }
 
+    /**
+     * Retorna lista de itens do cardápio.
+     * @return ArrayList de Alimento.
+     */
     public ArrayList<Alimento> getItens() {
         return itens;
     }
 
+    /**
+     * Lista os itens do cardápio de maneira formatada.
+     * @return Listagem dos itens do cardápio.
+     */
     public String listaItens() {
         if (itens.isEmpty())
             return null;

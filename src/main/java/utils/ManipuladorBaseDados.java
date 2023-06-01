@@ -10,6 +10,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/**
+ * Classe que permite manipular base de dados do restaurante por meio de arquivos externos.
+ */
 public class ManipuladorBaseDados {
     private static final String SEPARADOR_CSV = ";";
     private final String nomeArquivo;
@@ -25,6 +29,11 @@ public class ManipuladorBaseDados {
         this.dirResources = dirResources;
     }
 
+    /**
+     * Lê arquivo CSV com registro de alimentos do cardápio.
+     * @return ArrayList de Alimento contendo todos os itens do registro.
+     * @throws CardapioVazioException Se o registro está vazio.
+     */
     public ArrayList<Alimento> leCardapio() throws CardapioVazioException{
         File arquivo = new File(dirResources + nomeArquivo);
 
