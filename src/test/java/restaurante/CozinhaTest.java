@@ -20,14 +20,14 @@ public class CozinhaTest {
         alimentos.add(new Alimento("Batatas fritas", 5, Categoria.APERITIVO));
         alimentos.add(new Alimento("Guarana", 4, Categoria.BEBIDA));
 
-        cozinha = new Cozinha(alimentos);
+        cozinha = new Cozinha(new Cardapio(alimentos));
     }
 
     @Test
     public void adicionaPedidoValido() {
         Pedido pedido = new Pedido(1085);
-        pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().get(1), 3));
-        pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().get(4), 5));
+        pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(1), 3));
+        pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(4), 5));
 
         assertTrue(cozinha.adicionaPedido(pedido));
     }
@@ -46,7 +46,7 @@ public class CozinhaTest {
     @Test
     public void exibePrimeiroPedidoValido() {
         Pedido pedido = new Pedido(1095);
-        pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().get(0), 8));
+        pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(0), 8));
 
         cozinha.adicionaPedido(pedido);
         Pedido primeiroPedido = cozinha.exibePrimeiroPedido();
@@ -64,11 +64,11 @@ public class CozinhaTest {
     @Test
     public void entregaPedidoValido() {
         Pedido pedido1 = new Pedido(285);
-        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().get(2), 1));
-        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().get(0), 2));
+        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(2), 1));
+        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(0), 2));
 
         Pedido pedido2 = new Pedido(286);
-        pedido2.adicionaItem(new Tupla<>(cozinha.getCardapio().get(1), 3));
+        pedido2.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(1), 3));
 
         cozinha.adicionaPedido(pedido1);
         cozinha.adicionaPedido(pedido2);
@@ -89,11 +89,11 @@ public class CozinhaTest {
     @Test
     public void listaPedidosValido() {
         Pedido pedido1 = new Pedido(285);
-        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().get(2), 1));
-        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().get(0), 2));
+        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(2), 1));
+        pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(0), 2));
 
         Pedido pedido2 = new Pedido(286);
-        pedido2.adicionaItem(new Tupla<>(cozinha.getCardapio().get(1), 3));
+        pedido2.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(1), 3));
 
         cozinha.adicionaPedido(pedido1);
         cozinha.adicionaPedido(pedido2);
@@ -123,28 +123,5 @@ public class CozinhaTest {
     @Test
     public void listaPedidosVazio() {
         assertNull(cozinha.listaPedidos());
-    }
-
-    @Test
-    public void listaItensCardapioPreenchido() {
-        String listagemEsperada = "+-------------------------------------------------------------------------------+\n" +
-                                  "|                             C  A  R  D  A  P  I  O                            |\n" +
-                                  "+-------------------------------------------------------------------------------+\n" +
-                                  "| ID  PRODUTO                                             VALOR     CATEGORIA   |\n" +
-                                  "+-------------------------------------------------------------------------------+\n" +
-                                  "|  1  Pastel                                              R$ 10,00  Vegano      |\n" +
-                                  "|  2  Pizza                                               R$ 30,00  Vegetariano |\n" +
-                                  "|  3  Hamburguer                                          R$ 20,00  Com carne   |\n" +
-                                  "|  4  Batatas fritas                                      R$  5,00  Aperitivo   |\n" +
-                                  "|  5  Guarana                                             R$  4,00  Bebida      |\n" +
-                                  "+-------------------------------------------------------------------------------+\n";
-
-        assertEquals(listagemEsperada, cozinha.listaItensCardapio());
-    }
-
-    @Test
-    public void listaItensCardapioVazio() {
-        Cozinha cozinhaVazia = new Cozinha(new ArrayList<>());
-        assertNull(cozinhaVazia.listaItensCardapio());
     }
 }

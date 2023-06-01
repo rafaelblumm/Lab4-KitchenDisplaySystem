@@ -1,14 +1,14 @@
 package utils;
 
-import restaurante.Alimento;
-import restaurante.Categoria;
+import exceptions.CardapioVazioException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import restaurante.Alimento;
+import restaurante.Categoria;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ManipuladorBaseDadosTest {
     private static String dirResources;
@@ -20,7 +20,7 @@ public class ManipuladorBaseDadosTest {
     }
 
     @Test
-    public void leCardapioValido() {
+    public void leCardapioValido() throws CardapioVazioException {
         bd = new ManipuladorBaseDados("cardapio_valido.csv", dirResources);
         ArrayList<Alimento> alimentos = bd.leCardapio();
 
@@ -38,13 +38,13 @@ public class ManipuladorBaseDadosTest {
     }
 
     @Test
-    public void leCardapioVazio() {
+    public void leCardapioVazio() throws CardapioVazioException {
         bd = new ManipuladorBaseDados("cardapio_vazio.csv", dirResources);
-        assertNull(bd.leCardapio());
+        assertThrows(CardapioVazioException.class, () -> bd.leCardapio());
     }
 
     @Test
-    public void leCardapioInexistente() {
+    public void leCardapioInexistente() throws CardapioVazioException {
         bd = new ManipuladorBaseDados("cardapio_inexistente.csv", dirResources);
         assertNull(bd.leCardapio());
     }
