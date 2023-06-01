@@ -4,8 +4,6 @@ import restaurante.Alimento;
 import restaurante.Cardapio;
 import restaurante.Pedido;
 
-import java.util.ArrayList;
-
 public class Menu {
     public void exibeTitulo() {
         String titulo = """

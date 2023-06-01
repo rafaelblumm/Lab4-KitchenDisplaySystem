@@ -8,8 +8,6 @@ import restaurante.Pedido;
 import utils.ManipuladorBaseDados;
 import utils.Tupla;
 
-import java.util.ArrayList;
-
 public class Controller {
     private static final int OP_EXIBE_FILA = 1;
     private static final int OP_SOLICITA_PEDIDO = 2;
