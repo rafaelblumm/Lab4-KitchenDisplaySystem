@@ -2,6 +2,7 @@ package utils;
 
 import exceptions.CardapioVazioException;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import restaurante.Alimento;
 import restaurante.Categoria;
@@ -20,6 +21,7 @@ public class ManipuladorBaseDadosTest {
     }
 
     @Test
+    @DisplayName("leCardapio | válido")
     public void leCardapioValido() throws CardapioVazioException {
         bd = new ManipuladorBaseDados("cardapio_valido.csv", dirResources);
         ArrayList<Alimento> alimentos = bd.leCardapio();
@@ -38,12 +40,14 @@ public class ManipuladorBaseDadosTest {
     }
 
     @Test
+    @DisplayName("leCardapio | vazio")
     public void leCardapioVazio() {
         bd = new ManipuladorBaseDados("cardapio_vazio.csv", dirResources);
         assertThrows(CardapioVazioException.class, () -> bd.leCardapio());
     }
 
     @Test
+    @DisplayName("leCardapio | inexistente")
     public void leCardapioInexistente() throws CardapioVazioException {
         bd = new ManipuladorBaseDados("cardapio_inexistente.csv", dirResources);
         assertNull(bd.leCardapio());
