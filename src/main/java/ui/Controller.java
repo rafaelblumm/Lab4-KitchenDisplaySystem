@@ -28,18 +28,10 @@ public class Controller {
 
     /**
      * Realiza procedimentos necessários para inicialização do programa.
-     * @return Condição de sucesso.
      */
-    public boolean inicializa() {
-        ManipuladorBaseDados bd = new ManipuladorBaseDados("cardapio.csv");
-
-        try {
-            cozinha = new Cozinha(new Cardapio(bd.leCardapio()));
-            return true;
-        } catch (CardapioVazioException e) {
-            Msg.exibeErro(e.getMessage() + "\n     Encerrando aplicativo.");
-            return false;
-        }
+    public void inicializa() throws CardapioVazioException {
+        ManipuladorBaseDados bd = new ManipuladorBaseDados("McSinos-cardapio.csv");
+        cozinha = new Cozinha(new Cardapio(bd.leCardapio()));
     }
 
     /**
@@ -47,13 +39,13 @@ public class Controller {
      */
     public void start() {
         menu.exibeTitulo();
-        int op = 0;
+        int op;
 
-        while (op != OP_SAIR) {
+        do {
             menu.exibeOperacoes();
             op = menu.aceitaOperacao();
             executaOperacao(op);
-        }
+        } while (op != OP_SAIR);
     }
 
     /**

@@ -41,7 +41,10 @@ public class Pedido {
      * @return Condição de sucesso.
      */
     public boolean adicionaItem(Tupla<Alimento, Integer> item) {
-        if (item == null || item.getElemento1() == null || item.getElemento2() <= 0)
+        if (item == null ||
+                item.getElemento1() == null ||
+                item.getElemento2() <= 0 ||
+                item.getElemento2() > MAX_QUANTIDADE)
             return false;
 
         return itens.add(item);
