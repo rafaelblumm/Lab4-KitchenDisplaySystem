@@ -1,6 +1,7 @@
 package restaurante;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class CardapioTest {
     }
 
     @Test
+    @DisplayName("listaItens | válido")
     public void listaItensCardapioPreenchido() {
         String listagemEsperada = "+-------------------------------------------------------------------------------+\n" +
                 "|                             C  A  R  D  A  P  I  O                            |\n" +
@@ -41,6 +43,7 @@ public class CardapioTest {
     }
 
     @Test
+    @DisplayName("listaItens | vazio")
     public void listaItensCardapioVazio() {
         Cardapio cardapioVazio = new Cardapio(new ArrayList<>());
         assertNull(cardapioVazio.listaItens());

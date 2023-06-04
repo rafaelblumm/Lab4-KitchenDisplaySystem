@@ -1,6 +1,7 @@
 package restaurante;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.Tupla;
 
@@ -15,29 +16,41 @@ public class PedidoTest {
     }
 
     @Test
+    @DisplayName("adicionaItem | válido")
     public void adicionaItemValido() {
         Alimento alimento = new Alimento("Polenta frita", 10, Categoria.APERITIVO);
         assertTrue(pedido.adicionaItem(new Tupla<>(alimento, 5)));
     }
 
     @Test
+    @DisplayName("adicionaItem | item = null")
     public void adicionaItemNull() {
         assertFalse(pedido.adicionaItem(null));
     }
 
     @Test
+    @DisplayName("adicionaItem | qnt = 0")
     public void adicionaItemQuantidadeZero() {
         Alimento alimento = new Alimento("Polenta frita", 10, Categoria.APERITIVO);
         assertFalse(pedido.adicionaItem(new Tupla<>(alimento, 0)));
     }
 
     @Test
+    @DisplayName("adicionaItem | qnt < 0")
     public void adicionaItemQuantidadeMenorQueZero() {
         Alimento alimento = new Alimento("Polenta frita", 10, Categoria.APERITIVO);
         assertFalse(pedido.adicionaItem(new Tupla<>(alimento, -8)));
     }
 
     @Test
+    @DisplayName("adicionaItem | qnt > max")
+    public void adicionaItemQuantidadeMaiorQueMax() {
+        Alimento alimento = new Alimento("Polenta frita", 10, Categoria.APERITIVO);
+        assertFalse(pedido.adicionaItem(new Tupla<>(alimento, 99999)));
+    }
+
+    @Test
+    @DisplayName("calculaTotal | válido")
     public void calculaTotalItensValidos() {
         pedido.adicionaItem(new Tupla<>(new Alimento("Pastel", 10, Categoria.VEGANO), 3));
         pedido.adicionaItem(new Tupla<>(new Alimento("Pizza", 30, Categoria.VEGETARIANO), 2));
@@ -49,11 +62,13 @@ public class PedidoTest {
     }
 
     @Test
+    @DisplayName("calculaTotal | vazio")
     public void calculaTotalVazio() {
         assertEquals(0, pedido.calculaTotal());
     }
 
     @Test
+    @DisplayName("exibePedido | válido")
     public void exibePedidoValido() {
         pedido.adicionaItem(new Tupla<>(new Alimento("Pastel", 10, Categoria.VEGANO), 3));
         pedido.adicionaItem(new Tupla<>(new Alimento("Pizza", 30, Categoria.VEGETARIANO), 2));
@@ -77,6 +92,7 @@ public class PedidoTest {
     }
 
     @Test
+    @DisplayName("exibePedido | vazio")
     public void exibePedidoVazio() {
         assertNull(pedido.exibePedido());
     }

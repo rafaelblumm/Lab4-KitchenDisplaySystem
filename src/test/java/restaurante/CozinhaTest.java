@@ -1,6 +1,7 @@
 package restaurante;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.Tupla;
 
@@ -24,6 +25,7 @@ public class CozinhaTest {
     }
 
     @Test
+    @DisplayName("adicionaPedido | válido")
     public void adicionaPedidoValido() {
         Pedido pedido = new Pedido(1085);
         pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(1), 3));
@@ -33,17 +35,20 @@ public class CozinhaTest {
     }
 
     @Test
+    @DisplayName("adicionaPedido | null")
     public void adicionaPedidoNull() {
         assertFalse(cozinha.adicionaPedido(null));
     }
 
     @Test
+    @DisplayName("adicionaPedido | vazio")
     public void adicionaPedidoVazio() {
         Pedido pedido = new Pedido(297);
         assertFalse(cozinha.adicionaPedido(pedido));
     }
 
     @Test
+    @DisplayName("exibePrimeiroPedido | válido")
     public void exibePrimeiroPedidoValido() {
         Pedido pedido = new Pedido(1095);
         pedido.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(0), 8));
@@ -56,12 +61,14 @@ public class CozinhaTest {
     }
 
     @Test
+    @DisplayName("exibePrimeiroPedido | vazio")
     public void exibePrimeiroPedidoVazio() {
         assertNull(cozinha.exibePrimeiroPedido());
     }
 
 
     @Test
+    @DisplayName("entregaPedido | válido")
     public void entregaPedidoValido() {
         Pedido pedido1 = new Pedido(285);
         pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(2), 1));
@@ -82,11 +89,13 @@ public class CozinhaTest {
     }
 
     @Test
+    @DisplayName("entregaPedido | vazio")
     public void entregaPedidoNull() {
         assertNull(cozinha.entregaPedido());
     }
 
     @Test
+    @DisplayName("listaPedidos | válido")
     public void listaPedidosValido() {
         Pedido pedido1 = new Pedido(285);
         pedido1.adicionaItem(new Tupla<>(cozinha.getCardapio().getItens().get(2), 1));
@@ -121,6 +130,7 @@ public class CozinhaTest {
     }
 
     @Test
+    @DisplayName("listaPedidos | vazio")
     public void listaPedidosVazio() {
         assertNull(cozinha.listaPedidos());
     }

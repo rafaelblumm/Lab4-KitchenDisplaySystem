@@ -1,13 +1,15 @@
 package utils;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import restaurante.Alimento;
 import restaurante.Categoria;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TuplaTest {
     @Test
+    @DisplayName("getElemento1 | String")
     public void getElemento1String() {
         Tupla<String, Integer> tupla = new Tupla<>("Pastel", 5);
 
@@ -15,6 +17,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("getElemento1 | Integer")
     public void getElemento1Integer() {
         Tupla<Integer, String> tupla = new Tupla<>(5, "Pastel");
 
@@ -22,6 +25,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("getElemento1 | Alimento")
     public void getElemento1Alimento() {
         Alimento alimento = new Alimento("Pastel", 15, Categoria.VEGETARIANO);
         Tupla<Alimento, Integer> tupla = new Tupla<>(alimento, 5);
@@ -30,6 +34,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("getElemento2 | String")
     public void getElemento2String() {
         Tupla<Integer, String> tupla = new Tupla<>(5, "Pastel");
 
@@ -37,6 +42,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("getElemento2 | Integer")
     public void getElemento2Integer() {
         Tupla<String, Integer> tupla = new Tupla<>("Pastel", 5);
 
@@ -44,6 +50,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("getElemento2 | Alimento")
     public void getElemento2Alimento() {
         Alimento alimento = new Alimento("Pastel", 15, Categoria.VEGETARIANO);
         Tupla<Integer, Alimento> tupla = new Tupla<>(5, alimento);
@@ -52,6 +59,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("toString | <Integer, Integer>")
     public void toStringIntegerInteger() {
         Tupla<Integer, Integer> tupla = new Tupla<>(10, 5);
 
@@ -60,6 +68,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("toString | <String, String>")
     public void toStringStringString() {
         Tupla<String, String> tupla = new Tupla<>("Lasanha", "Garfield");
 
@@ -68,6 +77,7 @@ public class TuplaTest {
     }
 
     @Test
+    @DisplayName("toString | <Alimento, Integer>")
     public void toStringAlimentoInteger() {
         Alimento alimento = new Alimento("Pastel", 15, Categoria.VEGETARIANO);
         Tupla<Alimento, Integer> tupla = new Tupla<>(alimento, 3);
