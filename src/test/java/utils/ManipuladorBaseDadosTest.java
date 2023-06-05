@@ -17,7 +17,7 @@ public class ManipuladorBaseDadosTest {
 
     @BeforeAll
     public static void setUp() {
-        dirResources = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+        dirResources = System.getProperty("user.dir") + "/src/test/resources/";
     }
 
     @Test

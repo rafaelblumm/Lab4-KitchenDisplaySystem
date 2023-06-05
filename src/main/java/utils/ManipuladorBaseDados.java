@@ -21,7 +21,7 @@ public class ManipuladorBaseDados {
 
     public ManipuladorBaseDados(String nomeArquivo) {
         this.nomeArquivo = nomeArquivo;
-        dirResources = System.getProperty("user.dir") + "\\src\\main\\resources\\";
+        dirResources = System.getProperty("user.dir") + "/src/main/resources/";
     }
 
     public ManipuladorBaseDados(String nomeArquivo, String dirResources) {
